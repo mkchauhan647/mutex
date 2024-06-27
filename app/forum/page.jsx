@@ -2,9 +2,9 @@
 import { useEffect, useRef, useState } from 'react';
 
 export default function Forum() {
-  const message = useRef<string>('');
-  const socketRef = useRef<WebSocket>(null); // Ref to store the WebSocket instance
-    const [messages,setMessages] = useState<Array<string>>([]);
+  const message = useRef('');
+  const socketRef = useRef(null); // Ref to store the WebSocket instance
+    const [messages,setMessages] = useState([]);
   useEffect(() => {
     async function getMessages() {
       const response = await fetch('http://localhost:3001/getMessages');
@@ -30,7 +30,7 @@ export default function Forum() {
               console.log('Message from server ', event.data);
           });
 
-          (socketRef.current as WebSocket | null) = socket;
+          socketRef.current  = socket;
         // Rtcpee
     //   }
     //   // Clean up on unmount
