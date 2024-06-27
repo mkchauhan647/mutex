@@ -30,7 +30,7 @@ export default function Forum() {
               console.log('Message from server ', event.data);
           });
 
-        socketRef.current = socket; // Store the WebSocket instance in the ref
+          (socketRef.current as WebSocket | null) = socket;
         // Rtcpee
     //   }
     //   // Clean up on unmount
